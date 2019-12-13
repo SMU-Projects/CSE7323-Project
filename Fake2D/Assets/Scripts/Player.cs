@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (!isAttacking && (joybutton.IsPressed() || Input.GetButton("Fire2")))
+        if (!isAttacking && (joybutton.IsPressed() || Input.GetButton("Fire")))
         {
             isAttacking = true;
             Debug.Log("Attacking!");

@@ -5,21 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Joybutton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-
-    [HideInInspector]
     bool pressed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public bool IsPressed()
     {
