@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Fake2D.unity
+    guid: 03dbb90a39f2c2148923fbf0e6d54d3e
   m_configObjects: {}
