@@ -23,8 +23,8 @@ public class AccelerationControlScript : MonoBehaviour {
         // If you shake the mobile device hard enough
         // (accelerations Square Magnitude greater then 5 for example)
         xText.text = "X: " + accelerationDir.x.ToString();
-        yText.text = "Y: " + accelerationDir.x.ToString();
-        zText.text = "Z: " + accelerationDir.x.ToString();
+        yText.text = "Y: " + accelerationDir.y.ToString();
+        zText.text = "Z: " + accelerationDir.z.ToString();
 
         if (accelerationDir.sqrMagnitude >= 5f) {
 
