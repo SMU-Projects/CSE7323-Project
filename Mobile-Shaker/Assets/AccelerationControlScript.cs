@@ -9,6 +9,7 @@ public class AccelerationControlScript : MonoBehaviour {
 	// References to controlled game objects that will fall
 	// when you shake the mobile device hard enough
 	public GameObject dishes1, dishes2, dishes3, dishes4;
+    public Text xText, yText, zText;
 
 	// variable to hold shaking acceleration value
 	Vector3 accelerationDir;
@@ -19,9 +20,13 @@ public class AccelerationControlScript : MonoBehaviour {
 		// Read new acceleration Input from mobile device
 		accelerationDir = Input.acceleration;
 
-		// If you shake the mobile device hard enough
-		// (accelerations Square Magnitude greater then 5 for example)
-		if (accelerationDir.sqrMagnitude >= 5f) {
+        // If you shake the mobile device hard enough
+        // (accelerations Square Magnitude greater then 5 for example)
+        xText.text = "X: " + accelerationDir.x.ToString();
+        yText.text = "Y: " + accelerationDir.x.ToString();
+        zText.text = "Z: " + accelerationDir.x.ToString();
+
+        if (accelerationDir.sqrMagnitude >= 5f) {
 
 			// then dishes fall off the shelves getting
 			// RigidBodies isKinematic option as false (become Dynamic)
