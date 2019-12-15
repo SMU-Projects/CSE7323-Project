@@ -67,7 +67,7 @@ public class Player : Character
         if (moveDirection != Vector3.zero)
         {
             attackAoe.transform.localPosition = attackRange * moveDirection + attackAoeSphere.radius * moveDirection;
-            ChangeSprite(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            ChangeSprite(xVelocity, zVelocity);
         }
     }
 
