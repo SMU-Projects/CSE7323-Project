@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243827483353318171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3955648302721584277}
@@ -173,9 +173,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAoe: {fileID: 1243827483353318171}
   moveSpeed: 2
-  attackStrength: 1
-  knockbackStrength: 1
-  maxHealth: 3
-  currentHealth: 3
-  attackRange: 0.2
+  attackCooldownTime: 1
+  attackDuration: 0.1
+  attackPower: 1
+  attackKnockback: 2
+  attackRange: 0.3
+  healthMax: 6
+  healthCurrent: 6
+  invincibleCooldownTime: 0.1
   distanceToStopBetweenPlayer: 0

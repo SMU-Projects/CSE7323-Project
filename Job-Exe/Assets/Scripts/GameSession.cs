@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
     // Configurable Parameters
     [SerializeField] bool isRunningOnMobile = true;
     [Range(0.5f, 4)] [SerializeField] float gameSpeed = 1f;
+    [SerializeField] Image[] hearts = null;
+
+    // Setup Variables
+    int playerHealth = 0;
+    //Canvas canvas;
 
     private void Awake()
     {
@@ -20,17 +26,14 @@ public class GameSession : MonoBehaviour
             GameSession gameSession = FindObjectOfType<GameSession>();
             gameSession.gameSpeed = gameSpeed;
             gameSession.isRunningOnMobile = isRunningOnMobile;
+            gameSession.playerHealth = playerHealth;
         }
         else
         {
+            Player player = FindObjectOfType<Player>();
+            playerHealth = player.GetCurrentHealth();
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -42,6 +45,16 @@ public class GameSession : MonoBehaviour
     public bool IsRunningOnMobile()
     {
         return isRunningOnMobile;
+    }
+
+    public void SetPlayerHealth(int health)
+    {
+        playerHealth = health;
+        int numberOfHeartsToDelete = hearts.Length - playerHealth;
+        for(int i = 1; i <= numberOfHeartsToDelete; i++)
+        {
+            Destroy(hearts[hearts.Length-i]);
+        }
     }
 
     public void DestroyGameSession()

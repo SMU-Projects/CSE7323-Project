@@ -128,12 +128,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAoe: {fileID: 7084450001941555811}
-  moveSpeed: 7
-  attackStrength: 2
-  knockbackStrength: 8
-  maxHealth: 6
-  currentHealth: 6
+  attackCooldownTime: 0.5
+  attackDuration: 0.1
+  attackPower: 2
+  attackKnockback: 5
   attackRange: 0.8
+  healthMax: 4
+  healthCurrent: 6
+  invincibleCooldownTime: 1
+  moveSpeed: 7
 --- !u!1 &7084450001941555811
 GameObject:
   m_ObjectHideFlags: 0

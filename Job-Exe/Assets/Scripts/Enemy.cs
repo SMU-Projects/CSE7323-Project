@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Character
 {
     // Configurable Parameters
+    [Header("AI")]
     [SerializeField] float distanceToStopBetweenPlayer = 0f;
 
     // Setup Variables

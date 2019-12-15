@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -74,9 +75,19 @@ public class Player : Character
             Enemy enemy = collision.gameObject.GetComponent(typeof(Enemy)) as Enemy;
             if (enemy)
             {
-                Debug.Log("hit");
                 enemy.TakeDamage(attackPower, attackKnockback, transform.position);
             }
         }
+    }
+
+    public void UpdateGameSessionHealth()
+    {
+        gameSession.SetPlayerHealth(healthCurrent);
+    }
+
+    override public void Death()
+    {
+        SceneLoader sl = new SceneLoader();
+        sl.LoadStartScene();
     }
 }
