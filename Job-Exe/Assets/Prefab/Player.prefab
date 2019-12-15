@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6634923624486865465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.010804, y: 4.440276, z: -16.063404}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 0.25, y: 1.5600002, z: 1}
   m_Children:
   - {fileID: 6748097240858518156}
   m_Father: {fileID: 0}
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4da9a58fc4a796549acdaeeaffe6031d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc8fe11916037544fa4cdeab66071c89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 1
+  m_Size: {x: 2.3, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -137,6 +137,15 @@ MonoBehaviour:
   healthCurrent: 6
   invincibleCooldownTime: 1
   moveSpeed: 7
+  georgeSprites:
+  - {fileID: 21300000, guid: fc8fe11916037544fa4cdeab66071c89, type: 3}
+  - {fileID: 21300000, guid: 4a98743733e88164994543b9dbab3f57, type: 3}
+  - {fileID: 21300000, guid: 4bf2310c0bc1cdc46bea73cb6a8648bc, type: 3}
+  - {fileID: 21300000, guid: 2f11fec2564ca354da623f68b9a12c26, type: 3}
+  - {fileID: 21300000, guid: 4c3c5d71e95ba9b4591fa6d124133062, type: 3}
+  - {fileID: 21300000, guid: 31d4bcdf3d47fbc429d873cf1ca31292, type: 3}
+  - {fileID: 21300000, guid: fb09200b34870ec43aee03ef4db2b11c, type: 3}
+  - {fileID: 21300000, guid: 40205965458d2694d9cdc6e2ef6b01a2, type: 3}
 --- !u!1 &7084450001941555811
 GameObject:
   m_ObjectHideFlags: 0

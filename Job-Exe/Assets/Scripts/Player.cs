@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : Character
 {
     // Configurable Parameters
+    [Header("Sprite")]
+    [SerializeField] Sprite[] georgeSprites = null;
 
     // Setup Variables
     GameSession gameSession;
@@ -65,6 +67,7 @@ public class Player : Character
         if (moveDirection != Vector3.zero)
         {
             attackAoe.transform.localPosition = attackRange * moveDirection + attackAoeSphere.radius * moveDirection;
+            ChangeSprite(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
     }
 
@@ -78,6 +81,27 @@ public class Player : Character
                 enemy.TakeDamage(attackPower, attackKnockback, transform.position);
             }
         }
+    }
+
+    public void ChangeSprite(float x, float z)
+    {
+        if (x == 0 && z < 0)
+            mySpriteRenderer.sprite = georgeSprites[0];
+        else if (x > 0 && z < 0)
+            mySpriteRenderer.sprite = georgeSprites[1];
+        else if (x > 0 && z == 0)
+            mySpriteRenderer.sprite = georgeSprites[2];
+        else if (x > 0 && z > 0)
+            mySpriteRenderer.sprite = georgeSprites[3];
+        else if (x == 0 && z > 0)
+            mySpriteRenderer.sprite = georgeSprites[4];
+        else if (x < 0 && z > 0)
+            mySpriteRenderer.sprite = georgeSprites[5];
+        else if (x < 0 && z == 0)
+            mySpriteRenderer.sprite = georgeSprites[6];
+        else if (x < 0 && z < 0)
+            mySpriteRenderer.sprite = georgeSprites[7];
+        mySpriteRenderer.size = new Vector2(2.3f, 1f);
     }
 
     public void UpdateGameSessionHealth()

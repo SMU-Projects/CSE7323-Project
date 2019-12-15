@@ -22,21 +22,23 @@ public class Character : MonoBehaviour
     [SerializeField] protected float moveSpeed = 7f;
 
     // Setup Variables
-    protected bool isAttacking;
+    protected SpriteRenderer mySpriteRenderer;
     protected Rigidbody myRigidbody;
     protected SphereCollider attackAoeSphere;
+    protected bool isAttacking;
     protected float timeSinceLastAttack = 0;
     protected float timeSinceDamaged = 0;
 
     // Start is called before the first frame update
     protected void Start()
     {
+        // Get Core Components
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         myRigidbody = GetComponent<Rigidbody>();
 
         // Setup Attack Range
         attackAoeSphere = attackAoe.GetComponent<SphereCollider>();
         attackAoeSphere.radius = attackRange;
-
     }
 
     protected void Update()
@@ -71,6 +73,7 @@ public class Character : MonoBehaviour
             if (healthCurrent <= 0)
             {
                 Death();
+                knockback /= 3;
             }
             Player player = this as Player;
             if(this as Player)
@@ -87,14 +90,19 @@ public class Character : MonoBehaviour
     {
         Destroy(attackAoe);
         enabled = false;
+
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider.enabled = false;
+
+        transform.Rotate(90, 0, 0);
+
         myRigidbody.constraints = RigidbodyConstraints.None;
         myRigidbody.constraints = RigidbodyConstraints.FreezePositionX;
         myRigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
 
         BoxCollider boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = true;
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        capsuleCollider.enabled = false;
+        
 
     }
 }
