@@ -72,25 +72,29 @@ public class Character : MonoBehaviour
             {
                 Death();
             }
-            else
+            Player player = this as Player;
+            if(this as Player)
             {
-                Player player = this as Player;
-                if(this as Player)
-                {
-                    player.UpdateGameSessionHealth();
-                }
-                timeSinceDamaged = 0;
-                Vector3 knockbackDirection = transform.position - fromPosition;
-                myRigidbody.AddForce(knockbackDirection.normalized * knockback * 1000f);
-                //myRigidbody.velocity = knockbackDirection.normalized * knockback * 1000f;
+                player.UpdateGameSessionHealth();
             }
+            timeSinceDamaged = 0;
+            Vector3 knockbackDirection = transform.position - fromPosition;
+            myRigidbody.AddForce(knockbackDirection.normalized * knockback * 1000f);
         }
     }
 
     virtual public void Death()
     {
-        //Destroy(attackAoe);
-        Destroy(this.gameObject);
-        //enabled = false;
+        Destroy(attackAoe);
+        enabled = false;
+        myRigidbody.constraints = RigidbodyConstraints.None;
+        myRigidbody.constraints = RigidbodyConstraints.FreezePositionX;
+        myRigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
+
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = true;
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider.enabled = false;
+
     }
 }

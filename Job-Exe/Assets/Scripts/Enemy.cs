@@ -34,7 +34,7 @@ public class Enemy : Character
         directionToPlayer = directionToPlayer.normalized;
         if (Vector3.Distance(player.transform.position, transform.position) > distanceToStopBetweenPlayer)
         {
-            myRigidbody.velocity = directionToPlayer * moveSpeed;
+            myRigidbody.velocity = new Vector3(directionToPlayer.x * moveSpeed, 0, directionToPlayer.z * moveSpeed);
         }
 
         attackAoe.transform.localPosition = attackRange * directionToPlayer + attackAoeSphere.radius * directionToPlayer;

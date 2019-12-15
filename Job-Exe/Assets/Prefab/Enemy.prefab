@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 3955648302721584277}
   - component: {fileID: 3955648302721584281}
   - component: {fileID: 3955648302721584280}
+  - component: {fileID: 658232197770906183}
   - component: {fileID: 3955648302721584283}
   - component: {fileID: 3955648302721584276}
   m_Layer: 0
@@ -143,6 +144,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &658232197770906183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955648302721584279}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3955648302721584283
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,7 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAoe: {fileID: 1243827483353318171}
-  moveSpeed: 2
   attackCooldownTime: 1
   attackDuration: 0.1
   attackPower: 1
@@ -181,4 +194,5 @@ MonoBehaviour:
   healthMax: 6
   healthCurrent: 6
   invincibleCooldownTime: 0.1
+  moveSpeed: 2
   distanceToStopBetweenPlayer: 0
