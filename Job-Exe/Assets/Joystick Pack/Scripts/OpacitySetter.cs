@@ -44,14 +44,14 @@ public class OpacitySetter : MonoBehaviour
     }
     private void Motion2()
     {
-        if (Input.GetButton("Motion2"))
+        if (gameSession.IsMotion2Detected())
         {
             image.color = new Color(0, 1, 0, 0.3f);
         }
     }
     private void Motion3()
     {
-        if (Input.GetButton("Motion3"))
+        if (gameSession.IsMotion3Detected())
         {
             image.color = new Color(0, 0, 1, 0.3f);
         }
