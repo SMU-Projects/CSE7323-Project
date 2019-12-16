@@ -87,11 +87,43 @@ public class GameSession : MonoBehaviour
 
     public bool IsMotion2Detected()
     {
+        if (!(timeSinceLastDetectedMotion >= motionCooldownTime))
+        {
+            return motion2;
+        }
+        else
+        {
+            if (accelerationDirection.x <= -0.6 )
+            {
+                timeSinceLastDetectedMotion = 0;
+                motion2 = true;
+            }
+            else
+            {
+                motion2 = false;
+            }
+        }
         return motion2;
     }
 
     public bool IsMotion3Detected()
     {
+        if (!(timeSinceLastDetectedMotion >= motionCooldownTime))
+        {
+            return motion3;
+        }
+        else
+        {
+            if (accelerationDirection.x >= 0.6)
+            {
+                timeSinceLastDetectedMotion = 0;
+                motion3 = true;
+            }
+            else
+            {
+                motion3 = false;
+            }
+        }
         return motion3;
     }
 
