@@ -4,10 +4,43 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    // Configurable Parameters
+    [SerializeField] GameObject[] rooms = null;
+    [SerializeField] GameObject player = null;
+
+    // Setup Variables
+    int numberOfRows = 3;
+    int numberOfCols = 4;
+
+    private void Awake()
+    {
+        for (int r = 0; r < numberOfRows; r++)
+        {
+            for (int c = 0; c < numberOfCols; c++)
+            {
+                int index = (int)Mathf.Round(Random.Range(0f, rooms.Length - 1));
+                Vector3 roomPosition = new Vector3(25 * c, 0, -25 * r);
+                GameObject roomGameObject = Instantiate(rooms[index], roomPosition, Quaternion.identity) as GameObject;
+                Room room = roomGameObject.GetComponent<Room>();
+
+                if (c == 0)
+                    room.isLeftBorder = true;
+                if (c == numberOfCols - 1)
+                    room.isRightBorder = true;
+                if (r == 0)
+                    room.isTopBorder = true;
+                if (r == numberOfRows - 1)
+                    room.isBottomBorder = true;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        int startRow = (int)Mathf.Round(Random.Range(0f, numberOfRows - 1));
+        int startCol = (int)Mathf.Round(Random.Range(0f, numberOfCols - 1));
+        player.transform.position = new Vector3(25 * startCol, 2, -25 * startRow);
     }
 
     // Update is called once per frame

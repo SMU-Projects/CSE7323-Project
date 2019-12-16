@@ -67,7 +67,8 @@ public class Player : Character
         if (moveDirection != Vector3.zero)
         {
             attackAoe.transform.localPosition = attackRange * moveDirection + attackAoeSphere.radius * moveDirection;
-            ChangeSprite(xVelocity, zVelocity);
+            //ChangeSprite(xVelocity, zVelocity);
+            ChangeSprite(xVelocity / (moveSpeed + 0.00001f), zVelocity / (moveSpeed + 0.00001f));
         }
     }
 
@@ -85,6 +86,9 @@ public class Player : Character
 
     public void ChangeSprite(float x, float z)
     {
+        x = Mathf.Round(x);
+        z = Mathf.Round(z);
+
         if (x == 0 && z < 0)
             mySpriteRenderer.sprite = georgeSprites[0];
         else if (x > 0 && z < 0)

@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     protected Rigidbody myRigidbody;
     protected SphereCollider attackAoeSphere;
     protected bool isAttacking;
+    protected bool isDead = false;
     protected float timeSinceLastAttack = 0;
     protected float timeSinceDamaged = 0;
 
@@ -65,6 +66,11 @@ public class Character : MonoBehaviour
         return healthCurrent;
     }
 
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
     public void TakeDamage(int damageAmount, float knockback, Vector3 fromPosition)
     {
         if(timeSinceDamaged >= invincibleCooldownTime)
@@ -73,7 +79,7 @@ public class Character : MonoBehaviour
             if (healthCurrent <= 0)
             {
                 Death();
-                knockback /= 3;
+                knockback /= 2;
             }
             Player player = this as Player;
             if(this as Player)
@@ -82,12 +88,14 @@ public class Character : MonoBehaviour
             }
             timeSinceDamaged = 0;
             Vector3 knockbackDirection = transform.position - fromPosition;
+            knockbackDirection.y = 0f;
             myRigidbody.AddForce(knockbackDirection.normalized * knockback * 1000f);
         }
     }
 
     virtual public void Death()
     {
+        isDead = true;
         Destroy(attackAoe);
         enabled = false;
 
