@@ -47,7 +47,6 @@ public class Room : MonoBehaviour
         }
         if (isPowerupRoom)
         {
-            Debug.Log("PowerupRoom!");
             GameObject powerupObject = Instantiate(powerupSpawner.Spawn(), powerupSpawner.transform.position, powerupSpawner.transform.rotation) as GameObject;
         }
     }

@@ -29,7 +29,7 @@ public class Level : MonoBehaviour
 
                 if ((r * numberOfCols + c) == elevatorRoomIndex)
                     room.isElevatorRoom = true;
-                if (chanceForPowerup == 0)
+                //if (chanceForPowerup == 0)
                     room.isPowerupRoom = true;
                 if (c == 0)
                     room.isLeftBorder = true;

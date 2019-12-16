@@ -52,7 +52,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected void Attack()
+    virtual protected void Attack()
     {
         if (timeSinceLastAttack >= attackCooldownTime)
         {

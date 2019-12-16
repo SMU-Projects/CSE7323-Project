@@ -6,15 +6,15 @@ public class Powerup : MonoBehaviour
 {
     // Configurable Parameters
     [Header("Powerup Sprites")]
-    [SerializeField] Sprite bat;
-    [SerializeField] Sprite coffee;
-    [SerializeField] Sprite donut;
-    [SerializeField] Sprite gloves;
-    [SerializeField] Sprite heart;
-    [SerializeField] Sprite shoe;
-    [SerializeField] Sprite spinach;
-    [SerializeField] Sprite stapler;
-    [SerializeField] Sprite watch;
+    [SerializeField] Sprite bat = null;
+    [SerializeField] Sprite coffee = null;
+    [SerializeField] Sprite donut = null;
+    [SerializeField] Sprite gloves = null;
+    [SerializeField] Sprite heart = null;
+    [SerializeField] Sprite shoe = null;
+    [SerializeField] Sprite spinach = null;
+    [SerializeField] Sprite stapler = null;
+    [SerializeField] Sprite watch = null;
 
     // Setup Variables
     GameSession gameSession;
@@ -71,7 +71,7 @@ public class Powerup : MonoBehaviour
             switch (powerupType)
             {
                 case 1: // Bat
-                    Debug.Log("Bat Picked Up");
+                    player.PickedUpBat();
                     break;
                 case 2: // Coffee
                     if (player.healthCurrent < player.healthMax)
@@ -84,8 +84,8 @@ public class Powerup : MonoBehaviour
                     player.attackKnockback += 3;
                     break;
                 case 4: // Gloves
-                    player.attackRange += 0.1f;
-                    player.attackAoe.GetComponent<SphereCollider>().radius += 0.1f;
+                    player.attackRange += 0.2f;
+                    player.attackAoe.GetComponent<SphereCollider>().radius += 0.2f;
                     break;
                 case 5: // Heart
                     if (player.healthCurrent < player.healthMax)
@@ -101,7 +101,7 @@ public class Powerup : MonoBehaviour
                     player.attackPower += 1;
                     break;
                 case 8: // Stapler
-                    Debug.Log("Stapler Picked Up");
+                    player.PickedUpStapler();
                     break;
                 case 9: // Watch
                     player.attackCooldownTime -= 0.1f;

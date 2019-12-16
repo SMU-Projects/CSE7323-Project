@@ -9,10 +9,12 @@ public class GameSession : MonoBehaviour
     [SerializeField] bool isRunningOnMobile = true;
     [Range(0.5f, 4)] [SerializeField] float gameSpeed = 1f;
     [SerializeField] Image[] hearts = null;
+    [SerializeField] Image[] ammo = null;
 
     // Setup Variables
     int playerHealthMax = 6;
     int playerHealthCurrent = 6;
+    int playerAmmoCount = 10;
     Vector3 accelerationDirection;
     bool motion1 = false;
     bool motion2 = false;
@@ -33,7 +35,7 @@ public class GameSession : MonoBehaviour
             gameSession.gameSpeed = gameSpeed;
             gameSession.isRunningOnMobile = isRunningOnMobile;
             gameSession.playerHealthMax = playerHealthMax;
-            gameSession.playerHealthCurrent = playerHealthCurrent;
+            gameSession.playerHealthCurrent = playerHealthCurrent; // Fix this for each level
         }
         else
         {
@@ -48,11 +50,10 @@ public class GameSession : MonoBehaviour
     void Update()
     {
         Time.timeScale = gameSpeed;
-        
+        timeSinceLastDetectedMotion += Time.deltaTime;
+
         if (isRunningOnMobile)
         {
-            timeSinceLastDetectedMotion += Time.deltaTime;
-
             accelerationDirection = Input.acceleration;
         }
     }
@@ -70,7 +71,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            if (accelerationDirection.sqrMagnitude >= 5f)
+            if (accelerationDirection.sqrMagnitude >= 5f || Input.GetAxis("Motion1") == 1)
             {
                 timeSinceLastDetectedMotion = 0;
                 motion1 = true;
@@ -91,7 +92,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            if (accelerationDirection.x <= -0.6 )
+            if (accelerationDirection.x <= -0.6 || Input.GetAxis("Motion2") == 1)
             {
                 timeSinceLastDetectedMotion = 0;
                 motion2 = true;
@@ -112,7 +113,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            if (accelerationDirection.x >= 0.6)
+            if (accelerationDirection.x >= 0.6 || Input.GetAxis("Motion3") == 1)
             {
                 timeSinceLastDetectedMotion = 0;
                 motion3 = true;
@@ -138,6 +139,22 @@ public class GameSession : MonoBehaviour
             else
             {
                 hearts[i].color = new Color(hearts[i].color.r, hearts[i].color.g, hearts[i].color.b, 0.3f);
+            }
+        }
+    }
+
+    public void UpdatePlayerAmmo(int ammoCount)
+    {
+        playerAmmoCount = ammoCount;
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < playerAmmoCount)
+            {
+                ammo[i].color = new Color(ammo[i].color.r, ammo[i].color.g, ammo[i].color.b, 1f);
+            }
+            else
+            {
+                ammo[i].color = new Color(ammo[i].color.r, ammo[i].color.g, ammo[i].color.b, 0.3f);
             }
         }
     }

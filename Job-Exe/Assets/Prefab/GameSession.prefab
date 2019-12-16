@@ -63,7 +63,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 102a8b23c4307a04aa795a606547ca69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63e73e8bc61106647b770cdad48c9add, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -889,6 +889,3 @@ MonoBehaviour:
   - {fileID: 915969674}
   - {fileID: 863804833}
   - {fileID: 46210449}
-  xText: {fileID: 0}
-  yText: {fileID: 0}
-  zText: {fileID: 0}
