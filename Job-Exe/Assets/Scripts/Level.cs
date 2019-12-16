@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     [SerializeField] GameObject player = null;
 
     // Setup Variables
+    AudioSource myAudioSource;
     int numberOfRows = 3;
     int numberOfCols = 4;
 
@@ -46,14 +47,15 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         int startRow = (int)Mathf.Round(Random.Range(0f, numberOfRows - 1));
         int startCol = (int)Mathf.Round(Random.Range(0f, numberOfCols - 1));
         player.transform.position = new Vector3(25 * startCol, 2, -25 * startRow);
+        PlayMusic();
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlayMusic()
     {
-        
+        myAudioSource.PlayOneShot(myAudioSource.clip);
     }
-}
+}  
