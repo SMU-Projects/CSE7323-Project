@@ -14,14 +14,19 @@ public class Room : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Spawner[] spawners = null;
+    [SerializeField] Spawner elevatorSpawner = null;
+    [SerializeField] Spawner powerupSpawner = null;
 
     // Setup Variables
+    public bool isElevatorRoom = false;
+    public bool isPowerupRoom = false;
     public bool isTopBorder = false;
     public bool isBottomBorder = false;
     public bool isRightBorder = false;
     public bool isLeftBorder = false;
     protected bool hasPlayerEntered = false;
     List<Enemy> enemies;
+    GameObject elevatorObject = null;
 
     private void Awake()
     {
@@ -35,6 +40,16 @@ public class Room : MonoBehaviour
         bottomDoor.isActive = !isBottomBorder;
         rightDoor.isActive = !isRightBorder;
         leftDoor.isActive = !isLeftBorder;
+
+        if (isElevatorRoom)
+        {
+            elevatorObject = Instantiate(elevatorSpawner.Spawn(), elevatorSpawner.transform.position, elevatorSpawner.transform.rotation) as GameObject;
+        }
+        if (isPowerupRoom)
+        {
+            Debug.Log("PowerupRoom!");
+            GameObject powerupObject = Instantiate(powerupSpawner.Spawn(), powerupSpawner.transform.position, powerupSpawner.transform.rotation) as GameObject;
+        }
     }
 
     // Update is called once per frame
@@ -52,12 +67,16 @@ public class Room : MonoBehaviour
                 enemies.RemoveAt(i);
             }
         }
-        if (enemies.Count == 0)
+        if (hasPlayerEntered && enemies.Count == 0)
         {
             bottomDoor.OpenDoor();
             topDoor.OpenDoor();
             leftDoor.OpenDoor();
             rightDoor.OpenDoor();
+            if(isElevatorRoom)
+            {
+                elevatorObject.GetComponent<Elevator>().OpenElevator();
+            }
         }
     }
 
@@ -84,8 +103,8 @@ public class Room : MonoBehaviour
                     Enemy enemy = enemyGameObject.GetComponent<Enemy>();
                     enemies.Add(enemy);
                 }
+                hasPlayerEntered = true;
             }
         }
-        hasPlayerEntered = true;
     }
 }

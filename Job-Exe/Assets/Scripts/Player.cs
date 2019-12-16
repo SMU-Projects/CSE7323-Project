@@ -113,12 +113,11 @@ public class Player : Character
 
     public void UpdateGameSessionHealth()
     {
-        gameSession.SetPlayerHealth(healthCurrent);
+        gameSession.UpdatePlayerHealth(healthMax, healthCurrent);
     }
 
     override public void Death()
     {
-        SceneLoader sl = new SceneLoader();
-        sl.LoadStartScene();
+        SceneManager.LoadScene("GameOver");
     }
 }

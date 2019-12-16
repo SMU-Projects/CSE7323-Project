@@ -6,20 +6,20 @@ public class Character : MonoBehaviour
 {
     // Configurable Parameters
     [Header("Attack")]
-    [SerializeField] protected GameObject attackAoe;
-    [SerializeField] protected float attackCooldownTime = 1f;
-    [SerializeField] protected float attackDuration = 0.1f;
-    [SerializeField] protected int attackPower = 2;
-    [SerializeField] protected float attackKnockback = 2f;
-    [SerializeField] protected float attackRange = 0.8f;
+    [SerializeField] public GameObject attackAoe;
+    [SerializeField] public float attackCooldownTime = 1f;
+    [SerializeField] public float attackDuration = 0.1f;
+    [SerializeField] public int attackPower = 2;
+    [SerializeField] public float attackKnockback = 2f;
+    [SerializeField] public float attackRange = 0.8f;
     
     [Header("Health")]
-    [SerializeField] protected int healthMax = 6;
-    [SerializeField] protected int healthCurrent = 6;
-    [SerializeField] protected float invincibleCooldownTime = 1f;
+    [SerializeField] public int healthMax = 6;
+    [SerializeField] public int healthCurrent = 6;
+    [SerializeField] public float invincibleCooldownTime = 1f;
 
     [Header("Other")]
-    [SerializeField] protected float moveSpeed = 7f;
+    [SerializeField] public float moveSpeed = 7f;
 
     // Setup Variables
     protected SpriteRenderer mySpriteRenderer;
@@ -59,11 +59,6 @@ public class Character : MonoBehaviour
             isAttacking = true;
             timeSinceLastAttack = 0;
         }
-    }
-
-    public int GetCurrentHealth()
-    {
-        return healthCurrent;
     }
 
     public bool IsDead()

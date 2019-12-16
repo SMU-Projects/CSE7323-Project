@@ -9,10 +9,10 @@ public class GameSession : MonoBehaviour
     [SerializeField] bool isRunningOnMobile = true;
     [Range(0.5f, 4)] [SerializeField] float gameSpeed = 1f;
     [SerializeField] Image[] hearts = null;
-    [SerializeField] Text xText, yText, zText;
 
     // Setup Variables
-    int playerHealth = 0;
+    int playerHealthMax = 6;
+    int playerHealthCurrent = 6;
     Vector3 accelerationDirection;
     bool motion1 = false;
     bool motion2 = false;
@@ -32,12 +32,14 @@ public class GameSession : MonoBehaviour
             GameSession gameSession = FindObjectOfType<GameSession>();
             gameSession.gameSpeed = gameSpeed;
             gameSession.isRunningOnMobile = isRunningOnMobile;
-            gameSession.playerHealth = playerHealth;
+            gameSession.playerHealthMax = playerHealthMax;
+            gameSession.playerHealthCurrent = playerHealthCurrent;
         }
         else
         {
             Player player = FindObjectOfType<Player>();
-            playerHealth = player.GetCurrentHealth();
+            playerHealthMax = player.healthMax;
+            playerHealthCurrent = player.healthCurrent;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -52,11 +54,7 @@ public class GameSession : MonoBehaviour
             timeSinceLastDetectedMotion += Time.deltaTime;
 
             accelerationDirection = Input.acceleration;
-            xText.text = "X: " + accelerationDirection.x.ToString();
-            yText.text = "Y: " + accelerationDirection.y.ToString();
-            zText.text = "Z: " + accelerationDirection.z.ToString();
         }
-            
     }
 
     public bool IsRunningOnMobile()
@@ -127,13 +125,20 @@ public class GameSession : MonoBehaviour
         return motion3;
     }
 
-    public void SetPlayerHealth(int health)
+    public void UpdatePlayerHealth(int healthMax, int healthCurrent)
     {
-        playerHealth = health;
-        int numberOfHeartsToDelete = hearts.Length - playerHealth;
-        for(int i = 1; i <= numberOfHeartsToDelete; i++)
+        playerHealthMax = healthMax;
+        playerHealthCurrent = healthCurrent;
+        for (int i = 0; i < healthMax; i++)
         {
-            Destroy(hearts[hearts.Length-i]);
+            if (i < healthCurrent)
+            {
+                hearts[i].color = new Color(hearts[i].color.r, hearts[i].color.g, hearts[i].color.b, 1f);
+            }
+            else
+            {
+                hearts[i].color = new Color(hearts[i].color.r, hearts[i].color.g, hearts[i].color.b, 0.3f);
+            }
         }
     }
 

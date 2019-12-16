@@ -191,8 +191,8 @@ MonoBehaviour:
   attackPower: 1
   attackKnockback: 2
   attackRange: 0.3
-  healthMax: 6
-  healthCurrent: 6
+  healthMax: 3
+  healthCurrent: 3
   invincibleCooldownTime: 0.1
   moveSpeed: 2
   distanceToStopBetweenPlayer: 0

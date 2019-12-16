@@ -130,10 +130,10 @@ MonoBehaviour:
   attackAoe: {fileID: 7084450001941555811}
   attackCooldownTime: 0.5
   attackDuration: 0.1
-  attackPower: 2
-  attackKnockback: 5
+  attackPower: 1
+  attackKnockback: 2
   attackRange: 0.8
-  healthMax: 4
+  healthMax: 6
   healthCurrent: 6
   invincibleCooldownTime: 1
   moveSpeed: 7

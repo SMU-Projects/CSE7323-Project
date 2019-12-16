@@ -889,3 +889,6 @@ MonoBehaviour:
   - {fileID: 915969674}
   - {fileID: 863804833}
   - {fileID: 46210449}
+  xText: {fileID: 0}
+  yText: {fileID: 0}
+  zText: {fileID: 0}
