@@ -8,11 +8,12 @@ public class OpacitySetter : MonoBehaviour
     // Setup Variables
     bool isRunningOnMobile;
     Image image;
+    GameSession gameSession;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameSession gameSession = FindObjectOfType<GameSession>();
+        gameSession = FindObjectOfType<GameSession>();
         isRunningOnMobile = gameSession.IsRunningOnMobile();
 
         image = GetComponent<Image>();
@@ -36,7 +37,7 @@ public class OpacitySetter : MonoBehaviour
 
     private void Motion1()
     {
-        if (Input.GetButton("Motion1"))
+        if (gameSession.IsMotion1Detected())
         {
             image.color = new Color(1, 0, 0, 0.3f);
         }

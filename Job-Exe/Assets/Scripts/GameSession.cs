@@ -9,10 +9,16 @@ public class GameSession : MonoBehaviour
     [SerializeField] bool isRunningOnMobile = true;
     [Range(0.5f, 4)] [SerializeField] float gameSpeed = 1f;
     [SerializeField] Image[] hearts = null;
+    [SerializeField] Text xText, yText, zText;
 
     // Setup Variables
     int playerHealth = 0;
-    //Canvas canvas;
+    Vector3 accelerationDirection;
+    bool motion1 = false;
+    bool motion2 = false;
+    bool motion3 = false;
+    float motionCooldownTime = 0.3f;
+    float timeSinceLastDetectedMotion = 0;
 
     private void Awake()
     {
@@ -40,11 +46,53 @@ public class GameSession : MonoBehaviour
     void Update()
     {
         Time.timeScale = gameSpeed;
+        
+        if (isRunningOnMobile)
+        {
+            timeSinceLastDetectedMotion += Time.deltaTime;
+
+            accelerationDirection = Input.acceleration;
+            xText.text = "X: " + accelerationDirection.x.ToString();
+            yText.text = "Y: " + accelerationDirection.y.ToString();
+            zText.text = "Z: " + accelerationDirection.z.ToString();
+        }
+            
     }
 
     public bool IsRunningOnMobile()
     {
         return isRunningOnMobile;
+    }
+
+    public bool IsMotion1Detected()
+    {
+        if (!(timeSinceLastDetectedMotion >= motionCooldownTime))
+        {
+            return motion1;
+        }
+        else
+        {
+            if (accelerationDirection.sqrMagnitude >= 5f)
+            {
+                timeSinceLastDetectedMotion = 0;
+                motion1 = true;
+            }
+            else
+            {
+                motion1 = false;
+            }
+        }
+        return motion1;
+    }
+
+    public bool IsMotion2Detected()
+    {
+        return motion2;
+    }
+
+    public bool IsMotion3Detected()
+    {
+        return motion3;
     }
 
     public void SetPlayerHealth(int health)

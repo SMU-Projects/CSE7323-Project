@@ -66,8 +66,11 @@ public class Player : Character
         Vector3 moveDirection = myRigidbody.velocity.normalized;
         if (moveDirection != Vector3.zero)
         {
-            attackAoe.transform.localPosition = attackRange * moveDirection + attackAoeSphere.radius * moveDirection;
-            //ChangeSprite(xVelocity, zVelocity);
+            float xPos = transform.position.x + attackRange * moveDirection.x;
+            float yPos = attackAoeSphere.radius;
+            float zPos = transform.position.z + attackRange * moveDirection.z;
+            attackAoe.transform.position = new Vector3(xPos, yPos, zPos); 
+
             ChangeSprite(xVelocity / (moveSpeed + 0.00001f), zVelocity / (moveSpeed + 0.00001f));
         }
     }
